@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="project_project_website_form_view_inherit" model="ir.ui.view">
+        <field name="name">project.project.website.form.view.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='description']" position="after">
+                <page name="field_custom" string="Custom Fields">
+                    <group>
+                        <field name="visible_fields" widget="many2many_tags" options="{'no_create_edit': True}"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//group[@name='extra_settings']" position="inside">
+                <field name="trigger_create_new_task"/>
+                <field name="new_task_project" attrs="{'invisible':[('trigger_create_new_task','=',False)]}" domain="[('company_id','=',company_id)]"/>
+                <field name="new_stage" domain="[('project_ids','in',new_task_project)]" attrs="{'invisible':[('trigger_create_new_task','=',False)]}"/>
+                <field name="get_values_from_webpage"/>
+                <field name="webpage_id" attrs="{'invisible':[('get_values_from_webpage','=',False)]}"/>
+            </xpath>
+            <xpath expr="//h1" position="after">
+                <h5>
+                    <field name="project_website_url" attrs="{'invisible':[('project_website_url','=',False)]}"/>
+                </h5>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="project.open_view_project_all" model="ir.actions.act_window">
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <record id="project_project_action_tree_view" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="project.view_project"/>
+        <field name="act_window_id" ref="project.open_view_project_all"/>
+    </record>
+
+    <record id="project_project_action_form_view" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="project.view_project_kanban"/>
+        <field name="act_window_id" ref="project.open_view_project_all"/>
+    </record>
+</odoo>
