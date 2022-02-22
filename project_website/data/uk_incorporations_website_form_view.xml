@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="uk_incorporation_questionnaire" name="UK Incorporation Questionnaire">
+        <t t-call="website.layout">
+            <t t-set="additional_title">UK Incorporation Questionnaire</t>
+            <div id="wrap" class="oe_structure oe_empty">
+                <section
+                        class="s_title o_colored_level o_cc o_cc1 o_bg_img_opt_repeat s_parallax_no_overflow_hidden pb16 pt32"
+                        data-vcss="001" data-snippet="s_title" data-name="Title"
+                        style="position: relative; background-image: none;" data-scroll-background-ratio="0">
+                    <div class="s_allow_columns container">
+                        <div class="row">
+                            <div class="o_colored_level col-lg-5 pb0 pt48" style="">
+                                <h2>
+                                    <img class="img-fluid o_we_custom_image"
+                                         src="/project_website/static/img/starting_offshore.png" alt="" loading="lazy"/>
+                                    <br/>
+                                </h2>
+                            </div>
+                            <div class="o_colored_level col-lg-6 pt56">
+                                <h2>UK&amp;nbsp; Incorporation &amp;nbsp;Questionnaire</h2>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="s_text_block o_colored_level pb0 pt0" data-snippet="s_text_block" data-name="Text"
+                         style="background-image: none;">
+                    <div class="container s_allow_columns">
+                        <p class="o_default_snippet_text">Kindly answer below questions which help us to prepare the
+                            incorporation application for you.
+                            If you've any queries with the form , please write to us on <a
+                                    href="mailto:support@startingoffshore.com">support@startingoffshore.com
+                            </a> or you may connect with our team.
+                            <br/>
+                        </p>
+                    </div>
+                </section>
+                <section class="s_website_form pt16 pb16 o_colored_level" data-vcss="001"
+                         data-snippet="s_website_form" data-name="Form" style="background-image: none;"
+                         data-original-title="" title="" aria-describedby="tooltip449707">
+                    <div class="container">
+                        <form action="/uk/submit/" method="post" enctype="multipart/form-data"
+                              class="o_mark_required" data-mark="*" data-pre-fill="true"
+                              data-success-mode="redirect" data-success-page="/contactus-thank-you"
+                              data-model_name="project.task">
+                            <div class="s_website_form_rows row s_col_no_bgcolor">
+                                <div data-visibility-condition="" data-visibility-between=""
+                                     class="form-group s_website_form_field col-12 s_website_form_model_required pb24"
+                                     data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px" for="gl0xaoayah">
+                                            <span class="s_website_form_label_content">Name</span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control s_website_form_input"
+                                                   name="client_name" required="true" placeholder="Enter your name"
+                                                   id="gl0xaoayah"/>
+                                            <div class="s_website_form_field_description small form-text text-muted">
+                                                This field is required
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-visibility-condition="" data-visibility-between=""
+                                     class="form-group s_website_form_field col-12 s_website_form_required pb24"
+                                     data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label "
+                                               style="width: 200px" for="dwd7735gucc">
+                                            <span class="s_website_form_label_content">Email</span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control s_website_form_input"
+                                                   name="client_email" required="1"
+                                                   placeholder="Enter your email address" id="dwd7735gucc"/>
+                                            <div class="s_website_form_field_description small form-text text-muted">
+                                                This field is required*<br/>Please provide your valid email for
+                                                communication purpose for your company.
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-visibility-condition="" data-visibility-between=""
+                                     class="form-group s_website_form_field col-12 s_website_form_required"
+                                     data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label "
+                                               style="width: 200px" for="kekl3gpkt3p">
+                                            <span class="s_website_form_label_content">Phone</span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control s_website_form_input"
+                                                   name="client_phone" required="1" placeholder="Enter Your Answer"
+                                                   id="kekl3gpkt3p"/>
+                                            <div class="s_website_form_field_description small form-text text-muted">
+                                                Please provide your phone number with country code.
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-visibility-condition="" data-visibility-between=""
+                                     class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required"
+                                     data-type="many2one" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label "
+                                               style="width: 200px" for="hca9w9u1i9c">
+                                            <span class="s_website_form_label_content">How would you like to make
+                                                the
+                                                payment for Incorporation Fees ?
+                                            </span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <select class="form-control s_website_form_input"
+                                                    name="payment"
+                                                    required="1" id="hca9w9u1i9c" style="">
+                                                <option value="" selected="selected"/>
+                                                <option value="Bank Wire - USD , EUR , GBP">Bank Wire - USD , EUR ,
+                                                    GBP
+                                                </option>
+                                                <option value="BTC">BTC</option>
+                                                <option value="INR - Payment Link / Bank Transfer">INR - Payment
+                                                    Link /
+                                                    Bank Transfer
+                                                </option>
+                                                <option value="USDT - ERC20 / TRC20">USDT - ERC20 / TRC20</option>
+                                                <option value="Paypal - 5% Processing Fees Apply">Paypal - 5%
+                                                    Processing
+                                                    Fees Apply
+                                                </option>
+                                                <option value="Credit / Debit Card - 5% Processing Fees Apply">
+                                                    Credit /
+                                                    Debit Card - 5% Processing Fees Apply
+                                                </option>
+                                                <option value="SKIP - I HAVE ALREADY PAID">SKIP - I HAVE ALREADY
+                                                    PAID
+                                                </option>
+                                            </select>
+                                            <div class="s_website_form_field_description small form-text text-muted">
+                                                This field is required*
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-visibility-condition="" data-visibility-between="" data-type="char"
+                                     data-name="Field"
+                                     class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required pb24">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label "
+                                               style="width: 200px" for="g9kmk07x3vo">
+                                            <span class="s_website_form_label_content">Preferred Choice of Company
+                                                Name
+                                                - Provide 2 Names
+                                            </span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control s_website_form_input"
+                                                   name="company_name"
+                                                   required="1" placeholder="Enter Your Answer" id="g9kmk07x3vo"/>
+                                            <div class="s_website_form_field_description small form-text text-muted">
+                                                This field is required*
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-visibility-condition="" data-visibility-between="" data-type="text"
+                                     data-name="Field"
+                                     class="form-group s_website_form_field col-12 s_website_form_custom s_website_form_required pb24 pt24">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label "
+                                               style="width: 200px" for="rjujsu3z0vd">
+                                            <span class="s_website_form_label_content">Please list the name of
+                                                directors/shareholders in the company and the % of shareholding.
+                                            </span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <textarea class="form-control s_website_form_input"
+                                                      name="share_holding"
+                                                      required="1" placeholder="Enter Your Answer" id="rjujsu3z0vd"
+                                                      rows="3"/>
+                                            <div class="s_website_form_field_description small form-text text-muted">
+                                                Min 1 Director &amp;amp; Shareholder Required.
+
+                                                If you have multiple director &amp;amp; shareholders , list out their
+                                                names below with the shareholding % next to their name.
+                                                <br/>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-visibility-condition="" data-visibility-between=""
+                                     class="form-group s_website_form_field col-12" data-type="one2many"
+                                     data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class=" col-sm-auto s_website_form_label " style="width: 200px"
+                                               for="5wjatssdo6o">
+                                            <span class="s_website_form_label_content">Kindly Attach Your KYC
+                                                Documents
+                                                - Skip if you've already sent us
+                                            </span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="file" class="form-control-file s_website_form_input"
+                                                   name="attachment_ids" multiple="1" id="5wjatssdo6o"/>
+                                            <div class="s_website_form_field_description small form-text text-muted"
+                                                 data-original-title="" title="" aria-describedby="tooltip839111">
+                                                Below
+                                                are the list of documents required for each director/shareholder :
+                                                1. Notarised/Certified Passport Copy
+                                                2. Notarised/Certified National ID / Driving License
+                                                3. Notarised/Certified Utility Bill ( not older than 90 days )
+                                                4. Bank or Professional Reference Letter
+                                                5. Bank Statement or relevant document confirming Source of Funds /
+                                                Wealth ( for last 6 months )
+                                                Note : If the above documents are not in english , then a certified
+                                                translation in english is required.
+                                                If you need the sample of reference letter , please contact us on
+                                                <a href="mailto:support@startingoffshore.com">
+                                                    support@startingoffshore.com
+                                                </a>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_submit" data-name="Submit Button"
+                                     data-original-title="" title="" aria-describedby="tooltip654047">
+                                    <div style="width: 200px !important;" class="s_website_form_label"/>
+                                    <a href="#" role="button"
+                                       class="btn btn-primary btn-lg s_website_form_send o_default_snippet_text">
+                                        Submit
+                                    </a>
+                                    <span id="s_website_form_result"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

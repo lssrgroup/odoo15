@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="project_task_website_form_view_inherit" model="ir.ui.view">
+        <field name="name">project.task.website.form.view.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="task_priority"/>
+            </xpath>
+            <xpath expr="//page[@name='description_page']" position="before">
+                <page name="info" string="Information">
+                    <field name="company_visible" invisible="1"/>
+                    <field name="company_name_visible" invisible="1"/>
+                    <field name="client_name_visible" invisible="1"/>
+                    <field name="client_email_visible" invisible="1"/>
+                    <field name="monthly_fees_visible" invisible="1"/>
+                    <field name="product_id_visible" invisible="1"/>
+                    <field name="paid_from_visible" invisible="1"/>
+                    <field name="paid_to_visible" invisible="1"/>
+                    <field name="lead_source_visible" invisible="1"/>
+                    <field name="proposal_visible" invisible="1"/>
+                    <field name="client_phone_visible" invisible="1"/>
+                    <field name="payment_visible" invisible="1"/>
+                    <field name="share_holding_visible" invisible="1"/>
+                    <field name="client_website_visible" invisible="1"/>
+                    <field name="client_country_visible" invisible="1"/>
+                    <field name="company_type_visible" invisible="1"/>
+                    <group>
+                        <group>
+                            <field name="client_name" attrs="{'invisible':[('client_name_visible','=',False)]}"/>
+                            <field name="client_email" attrs="{'invisible':[('client_email_visible','=',False)]}"/>
+                            <field name="lead_source" attrs="{'invisible':[('lead_source_visible','=',False)]}"/>
+
+                        </group>
+                        <group>
+                            <field name="res_company_id" attrs="{'invisible':[('company_visible','=',False)]}"/>
+                            <field name="company_name" attrs="{'invisible':[('company_name_visible','=',False)]}"/>
+                            <field name="monthly_fees" attrs="{'invisible':[('monthly_fees_visible','=',False)]}"/>
+                            <field name="proposal" attrs="{'invisible':[('proposal_visible','=',False)]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="product_id" domain="[('company_id','=',company_id)]" attrs="{'invisible':[('product_id_visible','=',False)]}"/>
+                            <field name="paid_from" attrs="{'invisible':[('paid_from_visible','=',False)]}"/>
+                            <field name="paid_to" attrs="{'invisible':[('paid_to_visible','=',False)]}"/>
+                            <field name="client_country" attrs="{'invisible':[('client_country_visible','=',False)]}"/>
+                        </group>
+                        <group>
+                            <field name="client_phone" attrs="{'invisible':[('client_phone_visible','=',False)]}"/>
+                            <field name="payment" attrs="{'invisible':[('payment_visible','=',False)]}"/>
+                            <field name="client_website" attrs="{'invisible':[('client_website_visible','=',False)]}"/>
+                            <field name="company_type" attrs="{'invisible':[('company_type_visible','=',False)]}"/>
+                        </group>
+                    </group>
+                    <field name="share_holding" widget="html" attrs="{'invisible':[('share_holding_visible','=',False)]}"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
