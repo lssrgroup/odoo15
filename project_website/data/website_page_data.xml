@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<data>
+<data noupdate="1">
 
     <record id="st_vincent_incorporation_questionnaire_page" model="website.page">
         <field name="is_published">True</field>
@@ -8,13 +8,13 @@
         <field name="track">True</field>
     </record>
 
-    <record id="menu_st_vincent_incorporation_questionnaire" model="website.menu">
-        <field name="name">St Vincent Incorporation Questionnaire</field>
-        <field name="url">/st-vincent-incorporation-questionnaire</field>
-        <field name="page_id" ref="st_vincent_incorporation_questionnaire_page"/>
-        <field name="parent_id" ref="website.main_menu"/>
-        <field name="sequence" type="int">12</field>
-    </record>
+<!--    <record id="menu_st_vincent_incorporation_questionnaire" model="website.menu">-->
+<!--        <field name="name">St Vincent Incorporation Questionnaire</field>-->
+<!--        <field name="url">/st-vincent-incorporation-questionnaire</field>-->
+<!--        <field name="page_id" ref="st_vincent_incorporation_questionnaire_page"/>-->
+<!--        <field name="parent_id" ref="website.main_menu"/>-->
+<!--        <field name="sequence" type="int">12</field>-->
+<!--    </record>-->
 
     <record id="uk_incorporation_questionnaire_page" model="website.page">
         <field name="is_published">True</field>
