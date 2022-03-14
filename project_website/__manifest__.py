@@ -1,9 +1,10 @@
 {
     "name": """Project Website""",
-    "summary": """Project Customization and """,
+    "summary": """Project Customization and webiste Integration """,
     "category": "Hidden/Tools",
-    "version": "15.0.0.0",
+    "version": "15.0.0.4",
     "application": False,
+    "sequence": 10,
     "author": "Prime Minds Consulting Services",
     "website": "http://primeminds.co",
     "license": "LGPL-3",  # MIT

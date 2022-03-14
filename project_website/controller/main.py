@@ -5,9 +5,7 @@ import base64
 from odoo import _
 
 
-
 class ProjectTaskPortal(Controller):
-
     def prepare_project_task_values(self, values):
         task_vals = {}
         for vals in values:
@@ -49,7 +47,6 @@ class ProjectTaskPortal(Controller):
     def create_task_for_svg(self, **post):
         post.pop('model_name')
         values = self.prepare_project_task_values(post)
-        print('00000000',request.env.ref('project_website.uk_incorporation_questionnaire_page'))
         project_id = request.env['project.project'].sudo().search(
             [('webpage_id', '=', request.env.ref('project_website.uk_incorporation_questionnaire_page').id)])
         if not project_id:

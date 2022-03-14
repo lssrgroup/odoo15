@@ -131,9 +131,14 @@ class Task(models.Model):
                 if not self.project_id.new_task_project:
                     raise ValidationError('Please Assign The Project where the task is needed to be created')
                 new_task = self.copy()
+                messages = self.env["mail.message"].search(
+                    [("res_id", "=", self.id), ("model", "=", "project.task"), ("message_type", "=", "comment")])
+
                 new_task.write({
                     'project_id': self.project_id.new_task_project.id,
-                    'stage_id': self.project_id.new_stage.id
+                    'stage_id': self.project_id.new_stage.id,
+                    'name': self.name
                 })
-
+                for message in messages:
+                    message.copy({"model": "project.task", "res_id": new_task.id})
 
