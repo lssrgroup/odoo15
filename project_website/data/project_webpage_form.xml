@@ -13,7 +13,7 @@
                             <div class="o_colored_level col-lg-5 pb0 pt48" style="">
                                 <h2>
                                     <img class="img-fluid o_we_custom_image"
-                                         src="/project_website/static/img/starting_offshore.png" alt=""/>
+                                         src="/project_website/static/img/starting_offshore.png" alt="" loading="lazy"/>
                                     <br/>
                                 </h2>
                             </div>
@@ -36,14 +36,13 @@
                     </div>
                 </section>
                 <section class="s_website_form pt16 pb16 o_colored_level" data-vcss="001"
-                         data-snippet="s_website_form"
-                         data-name="Form" style="background-image: none;" data-original-title="" title=""
-                         aria-describedby="tooltip449707">
+                         data-snippet="s_website_form" data-name="Form" style="background-image: none;"
+                         data-original-title="" title="" aria-describedby="tooltip449707">
                     <div class="container">
                         <form action="/svg/submit/" method="post" enctype="multipart/form-data"
                               class="o_mark_required" data-mark="*" data-pre-fill="true"
-                              data-success-mode="redirect"
-                              data-success-page="/contactus-thank-you" data-model_name="project.task">
+                              data-success-mode="redirect" data-success-page="/contactus-thank-you"
+                              data-model_name="project.task">
                             <div class="s_website_form_rows row s_col_no_bgcolor">
                                 <div data-visibility-condition="" data-visibility-between=""
                                      class="form-group s_website_form_field col-12 s_website_form_model_required pb24"
@@ -98,8 +97,8 @@
                                         </label>
                                         <div class="col-sm">
                                             <input type="text" class="form-control s_website_form_input"
-                                                   name="client_phone" required="1" value=""
-                                                   placeholder="Enter Your Answer" id="kekl3gpkt3p"/>
+                                                   name="client_phone" required="1" placeholder="Enter Your Answer"
+                                                   id="kekl3gpkt3p"/>
                                             <div class="s_website_form_field_description small form-text text-muted">
                                                 Please provide your phone number with country code.
                                                 <br/>

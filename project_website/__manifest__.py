@@ -2,7 +2,7 @@
     "name": """Project Website""",
     "summary": """Project Customization and webiste Integration """,
     "category": "Hidden/Tools",
-    "version": "15.0.0.4",
+    "version": "15.0.0.5",
     "application": False,
     "sequence": 10,
     "author": "Prime Minds Consulting Services",

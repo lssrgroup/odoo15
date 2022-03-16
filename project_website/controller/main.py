@@ -5,11 +5,11 @@ import base64
 from odoo import _
 
 
-class ProjectTaskPortal(Controller):
+class ProjectTaskPortalSVG(Controller):
     def prepare_project_task_values(self, values):
         task_vals = {}
         for vals in values:
-            if not 'attachment_ids' in vals:
+            if 'attachment_ids' not in vals:
                 task_vals[vals] = values[vals]
         return task_vals
 
@@ -42,6 +42,16 @@ class ProjectTaskPortal(Controller):
                     'res_id': task_id.id
                 })
         return json.dumps({'id': task_id.id})
+
+
+class ProjectTaskPortalUK(Controller):
+
+    def prepare_project_task_values(self, values):
+        task_vals = {}
+        for vals in values:
+            if 'attachment_ids' not in vals:
+                task_vals[vals] = values[vals]
+        return task_vals
 
     @route(["/uk/submit/<string:model_name>"], type='http', auth="public", methods=['POST'], website=True)
     def create_task_for_svg(self, **post):
