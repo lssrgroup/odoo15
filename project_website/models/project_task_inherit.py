@@ -118,11 +118,11 @@ class Task(models.Model):
     lead_source_visible = fields.Boolean('lead_source_visible', compute='compute_fields_visible')
     proposal_visible = fields.Boolean('proposal_visible', compute='compute_fields_visible')
     client_phone_visible = fields.Boolean('client_phone_visible', compute='compute_fields_visible')
-    payment_visible = fields.Boolean('company_visible', compute='compute_fields_visible')
-    share_holding_visible = fields.Boolean('company_visible', compute='compute_fields_visible')
-    client_website_visible = fields.Boolean('company_visible', compute='compute_fields_visible')
-    client_country_visible = fields.Boolean('company_visible', compute='compute_fields_visible')
-    company_type_visible = fields.Boolean('company_visible', compute='compute_fields_visible')
+    payment_visible = fields.Boolean('payment_visible', compute='compute_fields_visible')
+    share_holding_visible = fields.Boolean('share_holding_visible', compute='compute_fields_visible')
+    client_website_visible = fields.Boolean('client_website_visible', compute='compute_fields_visible')
+    client_country_visible = fields.Boolean('client_country_visible', compute='compute_fields_visible')
+    company_type_visible = fields.Boolean('company_type_visible', compute='compute_fields_visible')
 
     @api.constrains('stage_id')
     def create_new_task_for_new_project(self):
