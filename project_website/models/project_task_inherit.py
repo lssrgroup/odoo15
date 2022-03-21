@@ -1,6 +1,28 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
+custom_readable_fields = {
+    'task_priority',
+    'proposal',
+    'payment',
+    'task_priority',
+    'res_company_id',
+    'company_name',
+    'client_name',
+    'client_email',
+    'monthly_fees',
+    'product_id',
+    'paid_from',
+    'paid_to ',
+    'lead_source',
+    'proposal',
+    'client_phone',
+    'payment',
+    'share_holding',
+    'client_website',
+    'client_country',
+    'company_type',
+}
 
 class Task(models.Model):
     _inherit = 'project.task'
@@ -86,26 +108,26 @@ class Task(models.Model):
     task_priority = fields.Selection(
         selection=[('low', 'Low'), ('medium', 'Medium'), ('high', 'High'), ('urgent', 'Very Urgent')],
         string='Priority', default='low')
-    res_company_id = fields.Many2one('res.company', string='Company')
-    company_name = fields.Char(string='Company Name')
-    client_name = fields.Char('Client Name')
-    client_email = fields.Char('Client Email')
-    monthly_fees = fields.Char('Monthly Fees')
-    product_id = fields.Many2one('product.product', string='Product')
-    paid_from = fields.Many2one('res.partner.bank', string='Paid From')
-    paid_to = fields.Many2one('res.partner', string='Paid To')
+    res_company_id = fields.Many2one('res.company', string='Company', copy=True)
+    company_name = fields.Char(string='Company Name', copy=True)
+    client_name = fields.Char('Client Name', copy=True)
+    client_email = fields.Char('Client Email', copy=True)
+    monthly_fees = fields.Char('Monthly Fees', copy=True)
+    product_id = fields.Many2one('product.product', string='Product', copy=True)
+    paid_from = fields.Many2one('res.partner.bank', string='Paid From', copy=True)
+    paid_to = fields.Many2one('res.partner', string='Paid To', copy=True)
     lead_source = fields.Selection(
         selection=[('match_trade', 'Match Trade'), ('metaquotes', 'Metaquotes'), ('partner', 'Partner'),
-                   ('organic', 'Organic')], string="Lead Source")
-    proposal = fields.Selection(selection=proposal, string="Proposal")
-    client_phone = fields.Char('Phone')
-    payment = fields.Selection(selection=payment, string="Payment Options")
-    share_holding = fields.Text('Company Share Holders')
-    client_website = fields.Char('Website Address')
-    client_country = fields.Char('Country')
+                   ('organic', 'Organic')], string="Lead Source", copy=True)
+    proposal = fields.Selection(selection=proposal, string="Proposal", copy=True)
+    client_phone = fields.Char('Phone', copy=True)
+    payment = fields.Selection(selection=payment, string="Payment Options", copy=True)
+    share_holding = fields.Text('Company Share Holders', copy=True)
+    client_website = fields.Char('Website Address', copy=True)
+    client_country = fields.Char('Country', copy=True)
     company_type = fields.Selection(selection=[("BC - Business Company", "BC - Business Company"),
                                                ("LLC - Limited Liablity Company", "LLC - Limited Liablity Company")],
-                                    string="Company Type")
+                                    string="Company Type", copy=True)
 
     company_visible = fields.Boolean('company visible', compute='compute_fields_visible')
     company_name_visible = fields.Boolean('company name visible', compute='compute_fields_visible')
@@ -134,6 +156,7 @@ class Task(models.Model):
                 messages = self.env["mail.message"].search(
                     [("res_id", "=", self.id), ("model", "=", "project.task"), ("message_type", "=", "comment")])
 
+
                 new_task.write({
                     'project_id': self.project_id.new_task_project.id,
                     'stage_id': self.project_id.new_stage.id,
@@ -142,3 +165,7 @@ class Task(models.Model):
                 for message in messages:
                     message.copy({"model": "project.task", "res_id": new_task.id})
 
+    @property
+    def SELF_READABLE_FIELDS(self):
+        res = super().SELF_READABLE_FIELDS
+        return res | custom_readable_fields
