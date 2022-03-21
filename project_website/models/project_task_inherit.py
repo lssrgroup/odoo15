@@ -1,6 +1,28 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
+custom_readable_fields = {
+    'task_priority',
+    'proposal',
+    'payment',
+    'task_priority',
+    'res_company_id',
+    'company_name',
+    'client_name',
+    'client_email',
+    'monthly_fees',
+    'product_id',
+    'paid_from',
+    'paid_to ',
+    'lead_source',
+    'proposal',
+    'client_phone',
+    'payment',
+    'share_holding',
+    'client_website',
+    'client_country',
+    'company_type',
+}
 
 class Task(models.Model):
     _inherit = 'project.task'
@@ -130,10 +152,9 @@ class Task(models.Model):
             if self.project_id and self.project_id.trigger_create_new_task:
                 if not self.project_id.new_task_project:
                     raise ValidationError('Please Assign The Project where the task is needed to be created')
-                new_task = self.copy_task()
+                new_task = self.copy()
                 messages = self.env["mail.message"].search(
                     [("res_id", "=", self.id), ("model", "=", "project.task"), ("message_type", "=", "comment")])
-
 
 
                 new_task.write({
@@ -144,55 +165,7 @@ class Task(models.Model):
                 for message in messages:
                     message.copy({"model": "project.task", "res_id": new_task.id})
 
-    def copy_task(self, default=None):
-        self.ensure_one()
-
-        # avoid recursion through already copied records in case of circular relationship
-        if '__copy_data_seen' not in self._context:
-            self = self.with_context(__copy_data_seen=defaultdict(set))
-        seen_map = self._context['__copy_data_seen']
-        if self.id in seen_map[self._name]:
-            return
-        seen_map[self._name].add(self.id)
-
-        default = dict(default or [])
-
-        # build a black list of fields that should not be copied
-        blacklist = set(MAGIC_COLUMNS + ['parent_path'])
-        whitelist = set(name for name, field in self._fields.items() if not field.inherited)
-
-        def blacklist_given_fields(model):
-            # blacklist the fields that are given by inheritance
-            for parent_model, parent_field in model._inherits.items():
-                blacklist.add(parent_field)
-                if parent_field in default:
-                    # all the fields of 'parent_model' are given by the record:
-                    # default[parent_field], except the ones redefined in self
-                    blacklist.update(set(self.env[parent_model]._fields) - whitelist)
-                else:
-                    blacklist_given_fields(self.env[parent_model])
-            # blacklist deprecated fields
-            for name, field in model._fields.items():
-                if field.deprecated:
-                    blacklist.add(name)
-
-        blacklist_given_fields(self)
-
-        fields_to_copy = {name: field
-                          for name, field in self._fields.items()
-                          if field.copy and name not in default and name not in blacklist}
-
-        for name, field in fields_to_copy.items():
-            if field.type == 'one2many':
-                # duplicate following the order of the ids because we'll rely on
-                # it later for copying translations in copy_translation()!
-                lines = [rec.copy_data()[0] for rec in self[name].sorted(key='id')]
-                # the lines are duplicated using the wrong (old) parent, but then are
-                # reassigned to the correct one thanks to the (Command.CREATE, 0, ...)
-                default[name] = [Command.create(line) for line in lines if line]
-            elif field.type == 'many2many':
-                default[name] = [Command.set(self[name].ids)]
-            else:
-                default[name] = field.convert_to_write(self[name], self)
-        return [default]
-
+    @property
+    def SELF_READABLE_FIELDS(self):
+        res = super().SELF_READABLE_FIELDS
+        return res | custom_readable_fields
