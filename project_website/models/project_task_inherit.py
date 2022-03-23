@@ -13,7 +13,7 @@ custom_readable_fields = {
     'monthly_fees',
     'product_id',
     'paid_from',
-    'paid_to ',
+    'paid_to',
     'lead_source',
     'proposal',
     'client_phone',
@@ -21,7 +21,7 @@ custom_readable_fields = {
     'share_holding',
     'client_website',
     'client_country',
-    'company_type',
+    'company_type'
 }
 
 class Task(models.Model):
@@ -155,15 +155,13 @@ class Task(models.Model):
                 new_task = self.copy()
                 messages = self.env["mail.message"].search(
                     [("res_id", "=", self.id), ("model", "=", "project.task"), ("message_type", "=", "comment")])
-
-
                 new_task.write({
                     'project_id': self.project_id.new_task_project.id,
                     'stage_id': self.project_id.new_stage.id,
                     'name': self.name
                 })
                 for message in messages:
-                    message.copy({"model": "project.task", "res_id": new_task.id})
+                    message.copy({"model": "project.task", "res_id": new_task.id, "notified_partner_ids": [(6,0,[])]})
 
     @property
     def SELF_READABLE_FIELDS(self):
