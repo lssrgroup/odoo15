@@ -158,7 +158,8 @@ class Task(models.Model):
                 new_task.write({
                     'project_id': self.project_id.new_task_project.id,
                     'stage_id': self.project_id.new_stage.id,
-                    'name': self.name
+                    'name': self.name,
+                    'user_ids': [(6,0,self.project_id.new_task_project.user_id.ids)]
                 })
                 for message in messages:
                     message.copy({"model": "project.task", "res_id": new_task.id, "notified_partner_ids": [(6,0,[])]})
